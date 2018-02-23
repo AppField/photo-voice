@@ -1,15 +1,22 @@
-
-  <ion-card>
-    <img src="img/nin-live.png"/>
-    <ion-card-content>
-      <ion-card-title>
-        Nine Inch Nails Live
-      </ion-card-title>
-      <p>
-        The most popular industrial group ever, and largely
-        responsible for bringing the music to a mass audience.
-      </p>
-      <button (click)="openPiture()">open me biatch</button>
-    </ion-card-content>
-  </ion-card>
+<ion-card class="card">
+  <!--<img src="../../assets/imgs/sample.jpeg"/>-->
+  <img src="http://imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg"/>
+  <ion-card-title class="title">
+    Beautiful Birdman
+  </ion-card-title>
+  <ion-card-content>
+    <p>
+      The most popular industrial group ever, and largely
+      responsible for bringing the music to a mass audience.
+    </p>
+    <ion-buttons class="buttons" end>
+      <button ion-button icon-only outline>
+        <ion-icon ios="ios-share-outline" md="md-share"></ion-icon>
+      </button>
+      <button ion-button icon-only outline>
+        <ion-icon ios="ios-play-outline" md="md-play"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-card-content>
+</ion-card>
 

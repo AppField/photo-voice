@@ -13,8 +13,5 @@ export class HomePage {
   }
 
 
-  openPiture(): void {
-    this.navCtrl.push(AboutPage);
-  }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform, PopoverController } from 'ionic-angular';
 import { PicturePost } from '../../model/picture-post.model';
+import { PopoverMenuComponent } from '../../components/popover-menu/popover-menu';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +10,14 @@ import { PicturePost } from '../../model/picture-post.model';
 export class HomePage implements OnInit {
   posts: PicturePost[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public platform: Platform,
+    public navCtrl: NavController,
+    private  popoverCtrl: PopoverController) {
+  }
+
+  get isIOs(): boolean {
+    return this.platform.is('ios');
   }
 
   ngOnInit() {
@@ -24,5 +32,11 @@ export class HomePage implements OnInit {
     }
   }
 
+  openMenu(event): void {
+    const popover = this.popoverCtrl.create(PopoverMenuComponent);
+    popover.present({
+      ev: event
+    });
+  }
 
 }

@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PicturePostComponent } from '../components/picture-post/picture-post';
+import { PopoverMenuComponent } from '../components/popover-menu/popover-menu';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PicturePostComponent } from '../components/picture-post/picture-post';
     AboutPage,
     ContactPage,
     HomePage,
-    PicturePostComponent
+    PicturePostComponent,
+    PopoverMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { PicturePostComponent } from '../components/picture-post/picture-post';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage
+    HomePage,
+    PopoverMenuComponent
   ],
   providers: [
     StatusBar,

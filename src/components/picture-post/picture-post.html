@@ -1,4 +1,4 @@
-<ion-card class="card">
+<ion-card class="card" (click)="openPost()">
   <img [src]="post.image"/>
   <ion-card-title class="title">
     {{ post.title }}
@@ -8,10 +8,10 @@
       {{ post.description }}
     </p>
     <ion-buttons class="buttons" end>
-      <button ion-button icon-only outline>
+      <button ion-button icon-only outline (click)="sharePost($event)">
         <ion-icon ios="ios-share-outline" md="md-share"></ion-icon>
       </button>
-      <button ion-button icon-only outline>
+      <button ion-button icon-only outline (click)="playPost($event)">
         <ion-icon ios="ios-play-outline" md="md-play"></ion-icon>
       </button>
     </ion-buttons>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PicturePost } from '../../model/picture-post.model';
 
 @Component({
@@ -7,12 +7,23 @@ import { PicturePost } from '../../model/picture-post.model';
 })
 export class PicturePostComponent {
   @Input() post: PicturePost;
+  @Output() openDetail = new EventEmitter<PicturePost>();
 
   constructor() {
   }
 
-  /*  openPiture(): void {
-      this.navCtrl.push(AboutPage);
-    }*/
+  openPost(): void {
+    this.openDetail.emit(this.post);
+  }
+
+  sharePost(event): void {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  playPost(event): void {
+    event.stopPropagation();
+    event.preventDefault();
+  }
 
 }

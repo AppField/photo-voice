@@ -32,6 +32,10 @@ export class HomePage implements OnInit {
     }
   }
 
+  openDetailView(post: PicturePost): void {
+    console.log('open detail, post', post);
+  }
+
   openMenu(event): void {
     const popover = this.popoverCtrl.create(PopoverMenuComponent);
     popover.present({

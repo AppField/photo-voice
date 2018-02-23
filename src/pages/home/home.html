@@ -19,7 +19,10 @@
 </ion-header>
 
 <ion-content padding>
-  <picture-post *ngFor="let post of posts" [post]="post"></picture-post>
+  <picture-post *ngFor="let post of posts"
+                [post]="post"
+                (openDetail)="openDetailView(post)"
+  ></picture-post>
 
   <ion-fab bottom right>
     <button ion-fab>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavController, Platform, PopoverController } from 'ionic-angular';
 import { PicturePost } from '../../model/picture-post.model';
 import { PopoverMenuComponent } from '../../components/popover-menu/popover-menu';
@@ -9,11 +9,14 @@ import { PopoverMenuComponent } from '../../components/popover-menu/popover-menu
 })
 export class HomePage implements OnInit {
   posts: PicturePost[];
+  @ViewChild('searchbar', { read: ElementRef }) searchbar: ElementRef;
+  @ViewChild('content', { read: ElementRef }) content: ElementRef;
 
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
-    private  popoverCtrl: PopoverController) {
+    private  popoverCtrl: PopoverController,
+    private renderer: Renderer2) {
   }
 
   get isIOs(): boolean {
@@ -22,7 +25,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.posts = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       this.posts.push({
         id: 'asdf23',
         title: 'Pretty Birdman',
@@ -41,6 +44,14 @@ export class HomePage implements OnInit {
     popover.present({
       ev: event
     });
+  }
+
+  onScroll(event): void {
+    console.log(event);
+    let scrollTop = this.platform.is('ios') ? 44 * 4 : 56 * 4;
+    scrollTop = event.scrollTop > scrollTop ? scrollTop / 4 : event.scrollTop / 4;
+    this.renderer.setStyle(this.searchbar.nativeElement, 'transform', `translate3d(0, ${scrollTop}px, 0)`);
+    this.renderer.setStyle(this.content.nativeElement, 'transform', `translate3d(0, ${scrollTop}px, 0)`);
   }
 
 }

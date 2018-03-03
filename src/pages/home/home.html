@@ -16,9 +16,12 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+
+  <!--<ion-searchbar #searchbar class="search"></ion-searchbar>-->
+
 </ion-header>
 
-<ion-content padding>
+<ion-content #content padding>
   <picture-post *ngFor="let post of posts"
                 [post]="post"
                 (openDetail)="openDetailView(post)"

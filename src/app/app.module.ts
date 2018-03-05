@@ -11,6 +11,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PicturePostComponent } from '../components/picture-post/picture-post';
 import { PopoverMenuComponent } from '../components/popover-menu/popover-menu';
+import { Camera } from '@ionic-native/camera';
+import { AddPostPageModule } from '../pages/add-post/add-post.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { PopoverMenuComponent } from '../components/popover-menu/popover-menu';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AddPostPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +39,8 @@ import { PopoverMenuComponent } from '../components/popover-menu/popover-menu';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Camera
   ]
 })
 export class AppModule {

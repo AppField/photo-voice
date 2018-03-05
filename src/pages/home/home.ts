@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { NavController, Platform, PopoverController } from 'ionic-angular';
+import { ModalController, NavController, Platform, PopoverController } from 'ionic-angular';
 import { PicturePost } from '../../model/picture-post.model';
 import { PopoverMenuComponent } from '../../components/popover-menu/popover-menu';
+import { AddPostPage } from '../add-post/add-post';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +16,8 @@ export class HomePage implements OnInit {
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
-    private  popoverCtrl: PopoverController,
+    private modalCtrl: ModalController,
+    private popoverCtrl: PopoverController,
     private renderer: Renderer2) {
   }
 
@@ -44,6 +46,16 @@ export class HomePage implements OnInit {
     popover.present({
       ev: event
     });
+  }
+
+  addPost(): void {
+    const addPostModal = this.modalCtrl.create(AddPostPage);
+    addPostModal.onDidDismiss(newPost => {
+      if (newPost) {
+        this.posts.unshift(newPost);
+      }
+    });
+    addPostModal.present()
   }
 
   onScroll(event): void {

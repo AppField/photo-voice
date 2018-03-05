@@ -11,12 +11,6 @@ import { Component } from '@angular/core';
   templateUrl: 'popover-menu.html'
 })
 export class PopoverMenuComponent {
-
-  text: string;
-
   constructor() {
-    console.log('Hello PopoverMenuComponent Component');
-    this.text = 'Hello World';
   }
-
 }

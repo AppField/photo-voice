@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>New Post</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <img [src]="base64Image" *ngIf="base64Image">
+
+  <ion-fab center bottom>
+    <button ion-fab class="record-button">
+      <ion-icon ios="ios-mic-outline" name="mic" class="record-icon"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

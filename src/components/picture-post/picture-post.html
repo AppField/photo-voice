@@ -11,8 +11,11 @@
       <button ion-button icon-only outline (click)="sharePost($event)">
         <ion-icon ios="ios-share-outline" md="md-share"></ion-icon>
       </button>
-      <button ion-button icon-only outline (click)="playPost($event)">
+      <button ion-button icon-only outline class="record-button" (click)="playAudio()" *ngIf="!isPlaying && post.audioFilename">
         <ion-icon ios="ios-play-outline" md="md-play"></ion-icon>
+      </button>
+      <button ion-button icon-only outline (click)="pauseAudio()" *ngIf="isPlaying">
+        <ion-icon ios="ios-pause-outline" md="md-pause"></ion-icon>
       </button>
     </ion-buttons>
   </ion-card-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">Close</button>
+      <button ion-button (click)="dismiss()">Save</button>
     </ion-buttons>
     <ion-title>New Post</ion-title>
   </ion-navbar>
@@ -9,10 +9,16 @@
 </ion-header>
 <ion-content>
   <img [src]="base64Image" *ngIf="base64Image">
+  <button ion-button icon-only (click)="playAudio()" *ngIf="audio && !recording">
+    <ion-icon name="play"></ion-icon>
+  </button>
 
-  <ion-fab center bottom>
-    <button ion-fab class="record-button">
+  <ion-fab center bottom class="record-container">
+    <button ion-fab class="record-button" (click)="startRecord()" *ngIf="!recording">
       <ion-icon ios="ios-mic-outline" name="mic" class="record-icon"></ion-icon>
+    </button>
+    <button ion-fab class="record-button" (click)="stopRecord()" *ngIf="recording">
+      <ion-icon ios="ios-mic-outline" name="pause" class="record-icon"></ion-icon>
     </button>
   </ion-fab>
 </ion-content>

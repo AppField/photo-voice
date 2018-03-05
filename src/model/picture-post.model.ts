@@ -3,7 +3,7 @@ export class PicturePost {
   title: string;
   description?: string;
   image: string;
-  record?: string;
+  audioFilename?: string;
   tags?: string[];
 
   constructor() {

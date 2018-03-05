@@ -9,7 +9,7 @@ import { AddPostPage } from '../add-post/add-post';
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
-  posts: PicturePost[];
+  posts: PicturePost[] = [];
   @ViewChild('searchbar', { read: ElementRef }) searchbar: ElementRef;
   @ViewChild('content', { read: ElementRef }) content: ElementRef;
 
@@ -26,15 +26,6 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.posts = [];
-    for (let i = 0; i < 10; i++) {
-      this.posts.push({
-        id: 'asdf23',
-        title: 'Pretty Birdman',
-        description: 'This is a very nice bird. And he\'s actually a person and comes from another planet.',
-        image: 'http://imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg',
-      });
-    }
   }
 
   openDetailView(post: PicturePost): void {

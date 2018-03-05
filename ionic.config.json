@@ -1,6 +1,6 @@
 {
   "name": "photo-voice",
-  "app_id": "",
+  "app_id": "93b466e9",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

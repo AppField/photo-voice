@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, Injectable, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -14,6 +14,32 @@ import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { AddPostPageModule } from '../pages/add-post/add-post.module';
 import { ComponentsModule } from '../components/components.module';
+import { Pro } from '@ionic/pro';
+
+Pro.init('93b466e9', {
+  appVersion: 'PV0.0.1'
+});
+
+@Injectable()
+export class MyErrorHandler implements ErrorHandler {
+  ionicErrorHandler: IonicErrorHandler;
+
+  constructor(injector: Injector) {
+    try {
+      this.ionicErrorHandler = injector.get(IonicErrorHandler);
+    } catch (e) {
+      // Unable to get the IonicErrorHandler provider, ensure
+      // IonicErrorHandler has been added to the providers list below
+    }
+  }
+
+  handleError(err: any): void {
+    Pro.monitoring.handleNewError(err);
+    // Remove this if you want to disable Ionic's auto exception handling
+    // in development mode.
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +64,8 @@ import { ComponentsModule } from '../components/components.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    IonicErrorHandler,
+    { provide: ErrorHandler, useClass: MyErrorHandler },
     Camera,
     Media,
     File

@@ -18,6 +18,7 @@ export class AddPostPage implements OnInit {
   fileName: string;
   audio: MediaObject;
   isPlaying = false;
+  private storageDirectory: any;
 
   constructor(
     private platform: Platform,
@@ -26,13 +27,16 @@ export class AddPostPage implements OnInit {
     private camera: Camera,
     private media: Media,
     private file: File) {
+    this.platform.ready().then(() => {
+      if (this.platform.is('ios')) {
+        this.storageDirectory = this.file.dataDirectory;
+      } else if (this.platform.is('android')) {
+        this.storageDirectory = this.file.externalDataDirectory;
+      }
+    });
   }
 
   ngOnInit() {
-    // this.takePicture();
-  }
-
-  ionViewWillEnter() {
     this.takePicture();
   }
 
@@ -59,11 +63,11 @@ export class AddPostPage implements OnInit {
     console.log('start recording');
     if (this.platform.is('ios')) {
       this.fileName = 'Photo Voice record' + new Date().getDate() + new Date().getMonth() + new Date().getFullYear() + new Date().getHours() + new Date().getMinutes() + new Date().getSeconds() + '.mp3';
-      this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + this.fileName;
+      this.filePath = this.storageDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     } else if (this.platform.is('android')) {
       this.fileName = 'Photo Voice record' + new Date().getDate() + new Date().getMonth() + new Date().getFullYear() + new Date().getHours() + new Date().getMinutes() + new Date().getSeconds() + '.mp3';
-      this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
+      this.filePath = this.storageDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     }
     console.log('filename:', this.fileName);
@@ -78,10 +82,10 @@ export class AddPostPage implements OnInit {
 
   playAudio(): void {
     if (this.platform.is('ios')) {
-      this.filePath = this.file.documentsDirectory.replace(/file:\/\//g, '') + this.fileName;
+      this.filePath = this.storageDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     } else if (this.platform.is('android')) {
-      this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
+      this.filePath = this.storageDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     }
     this.audio.play();

@@ -17,7 +17,7 @@ import { ComponentsModule } from '../components/components.module';
 import { Pro } from '@ionic/pro';
 
 Pro.init('93b466e9', {
-  appVersion: 'PV0.0.1'
+  appVersion: '0.0.1'
 });
 
 @Injectable()

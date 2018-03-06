@@ -17,6 +17,7 @@ export class AddPostPage implements OnInit {
   filePath: string;
   fileName: string;
   audio: MediaObject;
+  isPlaying = false;
 
   constructor(
     private platform: Platform,
@@ -28,6 +29,10 @@ export class AddPostPage implements OnInit {
   }
 
   ngOnInit() {
+    // this.takePicture();
+  }
+
+  ionViewWillEnter() {
     this.takePicture();
   }
 
@@ -80,6 +85,12 @@ export class AddPostPage implements OnInit {
       this.audio = this.media.create(this.filePath);
     }
     this.audio.play();
+    this.isPlaying = true;
+  }
+
+  pauseAudio(): void {
+    this.audio.pause();
+    this.isPlaying = false;
   }
 
   dismiss() {

@@ -9,25 +9,23 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { PicturePostComponent } from '../components/picture-post/picture-post';
-import { PopoverMenuComponent } from '../components/popover-menu/popover-menu';
 import { Camera } from '@ionic-native/camera';
 import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
 import { AddPostPageModule } from '../pages/add-post/add-post.module';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    PicturePostComponent,
-    PopoverMenuComponent
+    HomePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    ComponentsModule,
     AddPostPageModule
   ],
   bootstrap: [IonicApp],
@@ -35,8 +33,7 @@ import { AddPostPageModule } from '../pages/add-post/add-post.module';
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
-    PopoverMenuComponent
+    HomePage
   ],
   providers: [
     StatusBar,

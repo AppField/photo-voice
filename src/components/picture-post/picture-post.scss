@@ -11,10 +11,38 @@ picture-post {
     left: 0;
     width: 100%;
     margin: 0;
-    padding: .75rem;
+    padding: 0;
   }
 
   .buttons button {
     border: none;
+  }
+
+  // style audio range
+  .range-title {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 10;
+  }
+  .audio-range {
+    padding: 0;
+    margin: 0;
+  }
+
+  .range-md .range-slider, .range-ios .range-slider {
+    height: 3rem;
+  }
+  .range-md .range-bar, .range-ios .range-bar {
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .range-md .range-bar-active, .range-ios .range-bar-active {
+    opacity: .8;
+  }
+  .range-md .range-knob-handle, .range-ios .range-knob-handle {
+    display: none
   }
 }
